@@ -1,0 +1,41 @@
+@use '../../colors' as *;
+
+.banner {
+    background-color: $black;
+    border-radius: 30px;
+    padding: 31px;
+    display: flex;
+    justify-content: space-between;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: $white;
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    &__title {
+        font-family: var(--font-poppins);
+        font-size: 45px;
+        font-weight: 600;
+        line-height: 48px;
+        margin-bottom: 20px;
+    }
+    &__description {
+        margin-bottom: auto;
+        color: $gray-silver;
+    }
+    &__buttons {
+        display: flex;
+        gap: 24px;
+    }
+    &__button {
+        
+    }
+    &__image {
+        border-radius: 16px;
+    }
+}

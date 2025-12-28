@@ -1,0 +1,9 @@
+// colors & base styles
+@use 'colors' as *;
+@use 'globals';
+
+// reset
+@use 'reset';
+
+// components
+@use 'components/index'

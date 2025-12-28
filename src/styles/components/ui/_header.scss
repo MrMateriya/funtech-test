@@ -1,0 +1,29 @@
+@use '../../colors' as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    &__nav {
+        display: flex;
+        align-items: center;
+    }
+    &__logo {
+        margin-right: 66px;
+    }
+    &__links {
+        display: flex;
+        gap: 50px;
+        text-transform: uppercase;
+        color: $gray-deep;
+    }
+    &__links-item {
+
+    }
+    &__links-link {
+
+    }
+    &__button {
+
+    }
+}

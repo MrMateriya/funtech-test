@@ -1,0 +1,14 @@
+.page-layout {
+  padding-top: 45px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__main {
+    flex: 1 0 auto;
+    padding-bottom: 120px;
+  }
+  &__footer {
+    flex: 0 0 auto;
+  }
+}

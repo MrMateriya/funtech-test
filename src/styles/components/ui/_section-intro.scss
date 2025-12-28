@@ -1,0 +1,119 @@
+@use '../../colors' as *;
+
+.section-intro {
+  display: flex;
+  justify-content: space-between;
+
+  &__content {
+    margin-right: 50px;
+    min-width: 567px;
+  }
+  &__heading {
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    font-size: 76px;
+    line-height: 84px;
+    margin-bottom: 27px;
+    letter-spacing: -3px;
+
+    &::before {
+      content: "";
+      display: flex;
+      height: 1px;
+      width: 30%;
+      background-color: $black-slate;
+      opacity: 0.2;
+      margin-bottom: 10px;
+    }
+  }
+  &__description {
+    margin-bottom: 44px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: $gray-mat;
+    max-width: 490px;
+  }
+  &__buttons {
+    margin-bottom: 81px;
+    display: flex;
+    gap: 22px;
+  }
+  &__span {
+    color: $black;
+  }
+
+  &__abstractions {
+    
+  }
+}
+
+.metrics {
+  display: flex;
+  gap: 60px;
+
+  &__amount {
+    font-family: var(--public_sans);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+
+    display: flex;
+    flex-direction: column;
+  }
+  &__label {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: $gray-pale;
+    margin-top: 10px;
+  }
+}
+
+.abstractions {
+  display: flex;
+  white-space: nowrap;
+  position: relative;
+  gap: 27px;
+
+  &__first {
+    position: relative;
+    &-image {
+      border-radius: 25px;
+    }
+  }
+  &__second {
+    position: relative;
+    display: flex;
+    
+    &-image {
+      border-radius: 22px;
+    }
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  &__spring-arrow {
+    position: absolute;
+    top: 28px;
+  }
+  &__shadow {
+    top: 18px;
+    left: 0;
+    position: absolute;
+    z-index: -100;
+    filter: blur(60px);
+  }
+  &__dots {
+    width: 173px;
+    height: 400px;
+    top: -20px;
+    right: -30px;
+    position: absolute;
+    background-image: url("/icons/DotOrnament.svg");
+    background-repeat: space;
+  }
+}

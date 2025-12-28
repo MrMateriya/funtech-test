@@ -1,0 +1,11 @@
+@use 'colors' as *;
+
+html, 
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $white-pastel;
+  font-family: var(--font-inter);
+}

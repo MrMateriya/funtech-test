@@ -1,0 +1,62 @@
+@use '../../colors' as *;
+
+@mixin btn($bg-color: $white, $text-color: #000) {
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  border-radius: 12px;
+  background-color: $bg-color;
+  color: $text-color;
+  font-family: inherit;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+$btn-appearance: "black", "outline-black", "fill-white", "outline-white"; //fill black
+$btn-sizes: "sm", "md", "lg";
+
+@each $appearance in $btn-appearance {
+  .btn-#{$appearance} {
+    @if $appearance == "black" {
+      @include btn($black-deep, $white);
+      
+      &:hover {
+        background-color: $black-light;
+      }
+    } @else if $appearance == "outline-black" {
+      @include btn(transparent, $black-deep);
+      border: 2px solid $black-deep;
+
+      &:hover {
+          background-color: $gray-silver-light;
+      }
+    } @else if $appearance == "fill-white" {
+      @include btn($white, $black);
+
+      &:hover {
+          background-color: $gray-silver-light;
+      }
+    } @else if $appearance =="outline-white" {
+      @include btn($transparent, $white);
+      border: 2px solid $white;
+
+      &:hover {
+        background-color: $gray-silver-light;
+      }
+    }
+
+    @each $size in $btn-sizes {
+      &--#{$size} {
+        @if $size == "sm" {
+          padding: 16px 25px;
+        } @else if $size == "md" {
+          padding: 18px 22px;
+        } @else if $size == "lg" {
+          padding: 18px 31px;
+        }
+      }
+    }
+  }
+}
