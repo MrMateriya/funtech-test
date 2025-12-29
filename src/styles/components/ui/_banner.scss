@@ -8,6 +8,7 @@
     justify-content: space-between;
 
     &__content {
+        padding: 18px 36px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -19,21 +20,33 @@
     }
     &__title {
         font-family: var(--font-poppins);
-        font-size: 45px;
+        font-size: 46px;
         font-weight: 600;
         line-height: 48px;
         margin-bottom: 20px;
     }
     &__description {
-        margin-bottom: auto;
         color: $gray-silver;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 22px;
+        opacity: 60%;
     }
     &__buttons {
         display: flex;
         gap: 24px;
     }
     &__button {
-        
+        padding: 20px 27px;
+        text-transform: capitalize;
+
+        font-family: var(--outfit);
+        font-weight: 600;
+        font-size: 21px;
+
+        &:last-child {
+            padding: 19px 29px;
+        }
     }
     &__image {
         border-radius: 16px;

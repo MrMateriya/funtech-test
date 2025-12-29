@@ -8,7 +8,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import Abstraction_1 from "@/../public/images/Abstraction_1.jpg";
+import Abstraction_1_sm from "@/../public/images/Abstraction_1_sm.png";
+import Abstraction_1_md from "@/../public/images/Abstraction_1_md.png";
 import Abstraction_2 from "@/../public/images/Abstraction_2.jpg";
+import Abstraction_2_sm from "@/../public/images/Abstraction_2_sm.png";
 import ArrowSpring from "@/../public/icons/ArrowSpring.svg";
 import Arrow from "@/../public/icons/Arrow.svg";
 
@@ -50,8 +53,16 @@ export default function MainPage() {
             <span className="section-intro__span">$20 bonus</span>.
           </p>
           <div className="section-intro__buttons">
-            <Button>Explore More</Button>
-            <Button appearance="outline-black">Create NFT</Button>
+            <Button className="section-intro__button" sizes="lg">
+              Explore More
+            </Button>
+            <Button
+              className="section-intro__button"
+              sizes="md"
+              appearance="outline-black"
+            >
+              Create NFT
+            </Button>
           </div>
           <div className="section-intro__metrics metrics">
             {metrics.map(({ id, amount, label }) => (
@@ -68,22 +79,22 @@ export default function MainPage() {
               className="abstractions__first-image"
               width={390}
               height={395}
-              alt="Abstraction_1"
-              src={Abstraction_1}
+              alt="Abstraction_1_sm"
+              src={Abstraction_1_sm}
             />
             <Image
               className="abstractions__shadow"
               width={390}
               height={395}
-              alt="Abstraction_1"
-              src={Abstraction_1}
+              alt="Abstraction_1_sm"
+              src={Abstraction_1_sm}
             />
           </div>
           <div className="abstractions__wrapper">
             <Image
               className="abstractions__spring-arrow"
-              width={128}
-              height={124}
+              width={142}
+              height={136}
               alt="ArrowSpring"
               src={ArrowSpring}
             />
@@ -93,15 +104,15 @@ export default function MainPage() {
                 className="abstractions__second-image"
                 width={320}
                 height={322}
-                alt="Abstraction_2"
-                src={Abstraction_2}
+                alt="Abstraction_2_sm"
+                src={Abstraction_2_sm}
               />
               <Image
                 className="abstractions__shadow"
                 width={320}
                 height={322}
-                alt="Abstraction_2"
-                src={Abstraction_2}
+                alt="Abstraction_2_sm"
+                src={Abstraction_2_sm}
               />
             </div>
           </div>
@@ -113,7 +124,7 @@ export default function MainPage() {
         <Swiper
           className="top-nft__swiper swiper-nft"
           spaceBetween={40}
-          slidesPerView={5}
+          slidesPerView={4}
           loop={true}
           navigation={true}
         >
@@ -122,10 +133,10 @@ export default function MainPage() {
               <div className="slide-nft__image-wrapper">
                 <Image
                   className="slide-nft__image"
-                  src={Abstraction_1}
+                  src={Abstraction_1_sm}
                   width={253}
                   height={253}
-                  alt="Abstraction_1"
+                  alt="Abstraction_1_sm"
                 />
                 <span className="slide-nft__timer">07h 09m 12s</span>
               </div>
@@ -182,10 +193,18 @@ export default function MainPage() {
             <p className="banner__description">World’s Largest NFT Place</p>
           </div>
           <span className="banner__buttons">
-            <Button appearance="fill-white" className="banner__button">
+            <Button
+              sizes="md"
+              appearance="fill-white"
+              className="banner__button"
+            >
               Explore More
             </Button>
-            <Button appearance="outline-white" className="banner__button">
+            <Button
+              sizes="md"
+              appearance="outline-white"
+              className="banner__button"
+            >
               Sell Artwork
             </Button>
           </span>
@@ -194,8 +213,8 @@ export default function MainPage() {
           width={369}
           height={249}
           className="banner__image"
-          src={Abstraction_1}
-          alt="NFT image"
+          src={Abstraction_1_md}
+          alt="Abstraction_1_md"
         />
       </section>
     </PageLayout>

@@ -21,6 +21,7 @@ const public_Sans = Public_Sans({
 
 const outfit = Outfit({
   subsets: ["latin"],
+  variable: "--outfit",
   weight: ["400", "500", "600", "700"],
 });
 
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${poppins.variable} ${public_Sans.variable}`}
+        className={`${outfit.variable} ${inter.variable} ${poppins.variable} ${public_Sans.variable}`}
       >
         {children}
       </body>

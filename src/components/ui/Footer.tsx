@@ -18,12 +18,12 @@ const socialLinks: SocialLink[] = [
   {
     id: 1,
     href: "#",
-    svgHref: "/icons/Instagram.svg",
+    svgHref: "/icons/LinkedIn.svg",
   },
   {
     id: 2,
     href: "#",
-    svgHref: "/icons/LinkedIn.svg",
+    svgHref: "/icons/Instagram.svg",
   },
   {
     id: 3,

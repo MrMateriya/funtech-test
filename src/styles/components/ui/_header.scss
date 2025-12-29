@@ -3,6 +3,9 @@
 .header {
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    // top: 17px;
+    top: 0;
 
     &__nav {
         display: flex;
@@ -16,6 +19,11 @@
         gap: 50px;
         text-transform: uppercase;
         color: $gray-deep;
+
+        font-family: var(--font-inter);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 26px;
     }
     &__links-item {
 
@@ -24,6 +32,17 @@
 
     }
     &__button {
-
+        font-family: var(--font-inter);
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        border-radius: 16px;
+    }
+    &--scrolled {
+        background: $white;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 17px 97px;
+        z-index: 1000;
     }
 }
