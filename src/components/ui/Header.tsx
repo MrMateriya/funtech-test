@@ -3,13 +3,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import Button from "./Button";
-import {
-  HTMLAttributes,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { HTMLAttributes, useLayoutEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 export type HeaderLink = {
@@ -45,7 +39,7 @@ type HeaderProps = {
   className?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-const HEADER_HEIGHT = 20;
+const HEADER_HEIGHT = 25;
 
 export default function Header({ className }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,7 +65,7 @@ export default function Header({ className }: HeaderProps) {
       ref={headerRef}
       className={clsx(
         className,
-        "container",
+        !isScrolled && "container",
         "header",
         isScrolled && "header--scrolled"
       )}

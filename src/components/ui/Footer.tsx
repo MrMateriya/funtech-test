@@ -65,7 +65,6 @@ type FooterProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export default function Footer({ className }: FooterProps) {
-  // бля навигаций дохуя это валидно?
   return (
     <footer className={clsx(className, "footer")}>
       <div className="footer__container container">

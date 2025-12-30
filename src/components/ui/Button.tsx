@@ -1,5 +1,7 @@
 import clsx from "clsx";
 import { HTMLAttributes } from "react";
+import * as motion from "motion/react-client";
+import { type TargetAndTransition } from "motion";
 
 export type Appearance =
   | "fill-black"
