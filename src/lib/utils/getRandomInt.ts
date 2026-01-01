@@ -1,3 +1,4 @@
-export function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max);
+export function getRandomInt(max: number, seededRandom?: () => number): number {
+  const random = seededRandom || Math.random;
+  return Math.floor(random() * max);
 }

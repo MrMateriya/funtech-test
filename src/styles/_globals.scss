@@ -1,4 +1,5 @@
 @use 'colors' as *;
+@use './breakpoints' as *;
 
 html, 
 body {
@@ -9,4 +10,15 @@ body {
 body {
   background-color: $white-pastel;
   font-family: var(--font-inter);
+}
+
+@media screen and (min-width: ($breakpoint-desktop-hd + 1)) {
+  html {
+    zoom: 120%;
+  }
+}
+@media screen and (min-width: ($breakpoint-desktop-2k + 1)) {
+  html {
+    zoom: 170%;
+  }
 }

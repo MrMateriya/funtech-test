@@ -1,4 +1,5 @@
 @use '../../colors' as *;
+@use '../../breakpoints' as *;
 
 .banner {
     background-color: $black;
@@ -8,47 +9,168 @@
     justify-content: space-between;
 
     &__content {
-        padding: 18px 36px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        color: $white;
+      padding: 18px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: $white;
     }
     &__wrapper {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
     &__title {
-        font-family: var(--font-poppins);
-        font-size: 46px;
-        font-weight: 600;
-        line-height: 48px;
-        margin-bottom: 20px;
+      font-family: var(--font-poppins);
+      font-size: 46px;
+      font-weight: 600;
+      line-height: 48px;
+      margin-bottom: 20px;
     }
     &__description {
-        color: $gray-silver;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 22px;
-        opacity: 60%;
+      color: $gray-silver;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 22px;
+      opacity: 60%;
     }
     &__buttons {
-        display: flex;
-        gap: 24px;
+      display: flex;
+      gap: 24px;
     }
     &__button {
-        padding: 20px 27px;
-        text-transform: capitalize;
+      padding: 20px 27px;
+      text-transform: capitalize;
 
-        font-family: var(--outfit);
-        font-weight: 600;
-        font-size: 21px;
+      font-family: var(--outfit);
+      font-weight: 600;
+      font-size: 21px;
+
+      &:last-child {
+          padding: 19px 29px;
+      }
+    }
+    &__images {
+      position: relative;
+      display: flex;
+      min-width: 369px;
+      min-height: 249px;
+    }
+    &__images-img {
+      border-radius: 16px;
+      width: 100%;
+      height: 100%;
+    }
+    &__images-shadow {
+      opacity: 70%;
+      top: 8px;
+      position: absolute;
+      z-index: -100;
+      filter: blur(30px);
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding: 23px 22px;
+      border-radius: 22px;
+
+      &__content {
+        padding: 14px 26px;
+      }
+      &__title {
+        font-size: 34px;
+        line-height: 36px;
+        margin-bottom: 15px;
+      }
+      &__description {
+        font-size: 15px;
+        line-height: 16px;
+      }
+      &__buttons {
+        gap: 18px;
+      }
+      &__button {
+        padding: 15px 19px;
+
+        font-size: 16px;
+        line-height: 95%;
 
         &:last-child {
-            padding: 19px 29px;
+          padding: 15px 21px;
         }
+      }
+      &__images {
+        min-width: 263px;
+        min-height: 186px;
+      }
+      &__images-img {
+        border-radius: 12px;
+      }
     }
-    &__image {
-        border-radius: 16px;
+    @media screen and (max-width: $breakpoint-mobile) {
+      border-radius: 15px;
+      
+      &__title {
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 9px;
+      }
+      &__description {
+        font-size: 10px;
+        line-height: 130%;
+        margin-bottom: 21px;
+      }
+      &__buttons {
+        gap: 14px;
+      }
+      &__images {
+        min-width: 223px;
+        min-height: 146px;
+      }
+      &__button {
+        padding: 10px 13px;
+        font-size: 11px;
+        line-height: 130%;
+
+        &:last-child {
+          padding: 10px 15px;
+          border-width: 1px;
+        }
+      }
+    }
+    @media screen and (max-width: 560px) {
+      z-index: -200;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 22px 30px 86px 30px;
+    
+      &__content {
+        padding: 0;
+      }
+      &__buttons {
+        justify-content: center;
+      }
+      &__images {
+        position: absolute;
+        min-width: 251px;
+        min-height: unset;
+        height: 130px;
+        top: 165px;
+      }
+      &__images-img {
+        border-radius: 9px;
+      }
+      &__images-shadow {
+        opacity: 70%;
+        top: 8px;
+        position: absolute;
+        z-index: -100;
+        filter: blur(15px);
+        transform: scale(1.05);
+        width: 100%;
+        height: 100%;
+      }
     }
 }

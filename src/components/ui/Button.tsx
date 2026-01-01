@@ -1,7 +1,5 @@
 import clsx from "clsx";
 import { HTMLAttributes } from "react";
-import * as motion from "motion/react-client";
-import { type TargetAndTransition } from "motion";
 
 export type Appearance =
   | "fill-black"
@@ -10,7 +8,7 @@ export type Appearance =
   | "outline-white";
 export type Sizes = "sm" | "md" | "lg";
 
-type ButtonProps = {
+export type ButtonProps = {
   children?: React.ReactNode;
   sizes?: Sizes;
   appearance?: Appearance;
@@ -36,14 +34,12 @@ export default function Button({
     lg: "--lg",
   };
 
+  const baseClass = appearanceMap[appearance];
+  const sizeClass = `${baseClass}${sizesMap[sizes]}`;
+
   return (
     <button
-      className={clsx(
-        `${appearanceMap[appearance]} ${
-          appearanceMap[appearance] + sizesMap[sizes]
-        }`,
-        className
-      )}
+      className={clsx(baseClass, sizeClass, className)}
       {...props}
     >
       {children}

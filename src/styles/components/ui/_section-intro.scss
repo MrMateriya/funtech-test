@@ -1,4 +1,5 @@
 @use '../../colors' as *;
+@use '../../breakpoints' as *;
 
 .section-intro {
   display: flex;
@@ -52,9 +53,109 @@
     color: $black;
     font-weight: 600;
   }
-
   &__abstractions {
     
+  }
+  &__creators {
+    display: none;
+  }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    &__content {
+      margin-right: 90px;
+      min-width: 350px;
+    }
+    &__heading {
+      font-size: 54px;
+      line-height: 62px;
+      margin-bottom: 15px;
+      letter-spacing: -2px;
+
+      &::before {
+        width: 39%;
+        margin-bottom: 8px;
+      }
+    }
+    &__description {
+      margin-bottom: 36px;
+      font-size: 13px;
+      line-height: 18px;
+    }
+    &__buttons {
+      margin-bottom: 58px;
+      gap: 16px;
+    }
+    &__button {
+      font-size: 12px;
+      &:first-child {
+        padding: 13px 22px;
+      }
+    }
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+
+    &__content {
+      min-width: unset;
+      margin-right: unset;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__buttons {
+      justify-content: center;
+      margin-bottom: 65px;
+    }
+    &__heading {
+      font-size: 48px;
+      line-height: 54px;
+      margin-bottom: 16px;
+
+      &::before {
+        display: none;
+      }
+    }
+    &__description {
+      margin-bottom: 41px;
+      font-size: 11px;
+      line-height: 18px;
+    }
+    &__button {
+      font-size: 12px;
+      line-height: 100%;
+      &:first-child {
+        padding: 17px 21px;
+      }
+    }
+    &__creators {
+      display: flex;
+      margin-bottom: 8px;
+      justify-content: center;
+      text-transform: uppercase;
+      font-family: var(--font-poppins);
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 12px;
+      color: $black-slate;
+      align-items: center;
+      opacity: 50%;
+      letter-spacing: 1px;
+
+      &::before {
+        content: "";
+        width: 33px;
+        height: 1px;
+        background: $black-slate;
+        opacity: 50%;
+        margin-right: 8px;
+      }
+    }
+  }
+  @media screen and (max-width: $breakpoint-mobile-sm) {
+    &__buttons {
+      margin-bottom: 115px;
+    }
   }
 }
 
@@ -79,6 +180,23 @@
     color: $gray-pale;
     margin-top: 10px;
   }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    gap: 40px;
+
+    &__amount {
+      font-size: 26px;
+      line-height: 30px;
+    }
+    &__label {
+      font-size: 9px;
+      line-height: 13px;
+      margin-top: 8px;
+    }
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    display: none;
+  }
 }
 
 .abstractions {
@@ -89,18 +207,45 @@
   &__first {
     position: relative;
     margin-top: 7px;
+    width: 390px;
+    height: 395px;
 
     &-image {
       border-radius: 25px;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 280px;
+      height: 280px;
+
+      &-image {
+        border-radius: 18px;
+      }
     }
   }
   &__second {
     position: relative;
     display: flex;
     margin-bottom: 5px;
+    width: 320px;
+    height: 322px;
 
     &-image {
       border-radius: 22px;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 230px;
+      height: 230px;
+      margin-bottom: 7px;
+
+      &-image {
+        border-radius: 16px;
+      }
     }
   }
   &__wrapper {
@@ -111,8 +256,20 @@
   }
   &__spring-arrow {
     position: absolute;
-    left: -23px;
+    left: -18px;
     top: 48px;
+
+    &-svg {
+      height: 100%;
+      width: 100%;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      max-width: 100px;
+      max-height: 100px;
+      left: -12px;
+      top: 35px;
+    }
   }
   &__shadow {
     top: 18px;
@@ -121,6 +278,8 @@
     z-index: -100;
     filter: blur(30px);
     opacity: 70%;
+    width: 100%;
+    height: 100%;
   }
   &__dots {
     width: 173px;
@@ -131,5 +290,59 @@
     position: absolute;
     background-image: url("/icons/DotOrnament.svg");
     background-repeat: space;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 123px;
+      height: 284px;
+      background-size: 100%;
+      top: -9px;
+      right: -19px;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    gap: 26px;
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    gap: 19px;
+    justify-content: center;
+
+    &__first {
+      width: 210px;
+      min-width: 210px;
+      height: 210px;
+      margin-top: 0;
+    
+      &-image {
+        border-radius: 14px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__second {
+      width: 170px;
+      height: 170px;
+      margin-bottom: unset;
+      margin-top: 97px;
+
+      &-image {
+        border-radius: 12px;
+      }
+    }
+    &__spring-arrow {
+      max-width: 65px;
+      max-height: 65px;
+      top: 30px;
+      left: -10px;
+    }
+    &__dots {
+      width: 93px;
+      height: 213px;
+      top: -10px;
+      right: 8px;
+    }
+  }
+  @media screen and (max-width: 430px) {
+    justify-content: unset;
   }
 }

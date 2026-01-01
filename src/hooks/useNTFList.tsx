@@ -1,6 +1,9 @@
+import { useMemo } from "react";
 import { useFuntechSWR } from "@/lib/funtech-api/Http";
 import { getRandomDate } from '@/lib/utils/getRandomDate';
 import { getRandomInt } from '@/lib/utils/getRandomInt';
+import { seededRandom } from '@/lib/utils/seededRandom';
+import { ONE_HOUR_MS, TWELVE_HOURS_MS } from '@/lib/constants/time';
 
 export type NFT = {
   name: string;
@@ -28,19 +31,26 @@ export const useNFTList = () => {
   } = useFuntechSWR<NFTList>({
     key: "nfts/list",
   });
-  let mappedNFTListData;
-  if (NFTListData) {
+  const mappedNFTListData = useMemo(() => {
+    if (!NFTListData) {
+      return undefined;
+    }
+
     const now = new Date();
-    const oneHourLater = new Date(now.getTime() + 60 * 60 * 1000); // +1 час
-    const twelveHoursLater = new Date(now.getTime() + 12 * 60 * 60 * 1000); // +12 часов
+    const oneHourLater = new Date(now.getTime() + ONE_HOUR_MS);
+    const twelveHoursLater = new Date(now.getTime() + TWELVE_HOURS_MS);
     
-    mappedNFTListData = NFTListData.map(({ name }) => ({
-      name,
-      currentBid: Math.round((Math.random() * 10) * 100) / 100, // случайное число до сотых
-      expirationDate: getRandomDate(oneHourLater, twelveHoursLater),
-      imageSrc: NFT_IMAGES[getRandomInt(NFT_IMAGES.length)],
-    }));
-  }
+    return NFTListData.map(({ name }) => {
+      const random = seededRandom(name);
+      
+      return {
+        name,
+        currentBid: Math.round((random() * 10) * 100) / 100,
+        expirationDate: getRandomDate(oneHourLater, twelveHoursLater, random),
+        imageSrc: NFT_IMAGES[getRandomInt(NFT_IMAGES.length, random)],
+      };
+    });
+  }, [NFTListData]);
 
   return {
     NFTListData: mappedNFTListData,

@@ -5,5 +5,8 @@
 // reset
 @use 'reset';
 
+// breakpoints
+@use 'breakpoints' as *;
+
 // components
 @use 'components/index'

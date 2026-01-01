@@ -1,4 +1,5 @@
 @use '../../colors' as *;
+@use '../../breakpoints' as *;
 
 @mixin btn($bg-color: $white, $text-color: #000) {
   text-decoration: none;
@@ -12,6 +13,10 @@
   font-family: inherit;
   text-transform: uppercase;
   white-space: nowrap;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    border-radius: 9px;
+  }
 }
 
 $btn-appearance: "black", "outline-black", "fill-white", "outline-white"; //fill black
@@ -32,6 +37,10 @@ $btn-sizes: "sm", "md", "lg";
       &:hover {
           background-color: $gray-silver-light;
       }
+
+      @media screen and (max-width: $breakpoint-tablet) {
+        border-width: 1px;
+      }
     } @else if $appearance == "fill-white" {
       @include btn($white, $black);
 
@@ -51,10 +60,21 @@ $btn-sizes: "sm", "md", "lg";
       &--#{$size} {
         @if $size == "sm" {
           padding: 16px 25px;
+          @media screen and (max-width: $breakpoint-tablet) {
+
+          }
         } @else if $size == "md" {
           padding: 18px 22px;
+
+          @media screen and (max-width: $breakpoint-tablet) {
+            padding: 14px;
+          }
         } @else if $size == "lg" {
           padding: 18px 31px;
+
+          @media screen and (max-width: $breakpoint-tablet) {
+            padding: 13px 22px;
+          }
         }
       }
     }

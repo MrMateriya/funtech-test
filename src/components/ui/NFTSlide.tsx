@@ -4,15 +4,15 @@ import Image from "next/image";
 import Button from "./Button";
 import { useCountdown } from "@/hooks/useCountdown";
 import { NFT } from "@/hooks/useNTFList";
-import { HTMLAttributes } from 'react';
-import clsx from 'clsx';
+import { HTMLAttributes } from "react";
+import clsx from "clsx";
 
-type NFTSlideProps = {
+export type NFTSlideProps = {
   nft: NFT;
-  className?: string
+  className?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export default function NFTSlide({ className, nft }: NFTSlideProps) {
+export default function NftSlide({ className, nft }: NFTSlideProps) {
   const timeRemaining = useCountdown(nft.expirationDate);
 
   return (
@@ -50,4 +50,3 @@ export default function NFTSlide({ className, nft }: NFTSlideProps) {
     </div>
   );
 }
-

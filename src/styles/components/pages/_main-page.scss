@@ -1,11 +1,43 @@
+@use '../../breakpoints' as *;
+
 .main-page {
-    padding-bottom: 120px;
+  padding-bottom: 120px;
+
+  &__section-intro {
+    padding-top: 115px;
+    padding-bottom: 170px;
+  }
+  &__top-nft {
+    margin-bottom: 120px;
+  }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding-bottom: 90px;
 
     &__section-intro {
-        padding-top: 115px;
-        padding-bottom: 170px;
+      padding-top: 80px;
+      padding-bottom: 114px;
     }
     &__top-nft {
-        margin-bottom: 120px;
+      margin-bottom: 90px;
     }
+  }
+  @media screen and (max-width: 560px) {
+    padding-bottom: 253px;
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    &__section-intro {
+      padding-top: 42px;
+      padding-bottom: 62px;
+    }
+    &__top-nft {
+      margin-bottom: 70px;
+    }
+  }
+  @media screen and (max-width: $breakpoint-mobile-sm) {
+    &__section-intro {
+      padding-top: 72px;
+      padding-bottom: 132px;
+    }
+  }              
 }

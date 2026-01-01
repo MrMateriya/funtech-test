@@ -7,7 +7,9 @@ type LogoProps = {
   width?: number;
   height?: number;
   href?: string;
-  className?: string;
+  rootClassName?: string;
+  titleClassname?: string;
+  svgClassName?: string;
   logoColor?: "white" | "black";
 } & HTMLAttributes<HTMLAnchorElement>;
 
@@ -16,21 +18,32 @@ export default function Logo({
   width = 53,
   height = 53,
   href = "/",
-  className,
+  rootClassName,
+  svgClassName,
+  titleClassname,
   logoColor = "black",
   ...props
 }: LogoProps) {
   return (
-    <Link className={clsx(className, "logo")} href={href} {...props}>
+    <Link className={clsx(rootClassName, "logo")} href={href} {...props}>
       <svg
         width={width}
         height={height}
         viewBox="0 0 53 53"
-        className={`logo__svg logo__svg--${logoColor}`}
+        className={clsx(svgClassName, `logo__svg logo__svg--${logoColor}`)}
       >
         <use xlinkHref="/icons/Wave.svg"></use>
       </svg>
-      {title && <span className={`logo__title logo__title--${logoColor}`}>{title}</span>}
+      {title && (
+        <span
+          className={clsx(
+            titleClassname,
+            `logo__title logo__title--${logoColor}`
+          )}
+        >
+          {title}
+        </span>
+      )}
     </Link>
   );
 }
