@@ -24,6 +24,7 @@ export default function NftSlide({ className, nft }: NFTSlideProps) {
           width={253}
           height={253}
           alt={nft.name}
+          loading='lazy'
         />
         <span className="slide-nft__timer">{timeRemaining}</span>
       </div>

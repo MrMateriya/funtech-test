@@ -32,9 +32,8 @@ export const useNFTList = () => {
     key: "nfts/list",
   });
   const mappedNFTListData = useMemo(() => {
-    if (!NFTListData) {
-      return undefined;
-    }
+    if (!NFTListData) return;
+    
 
     const now = new Date();
     const oneHourLater = new Date(now.getTime() + ONE_HOUR_MS);

@@ -28,12 +28,12 @@ const SWIPER_BREAKPOINTS = {
   // },
 } as const;
 
-const SWIPER_CONFIG = {
-  speed: 600,
-  slidesPerView: 5,
-  spaceBetween: 32,
-  breakpoints: SWIPER_BREAKPOINTS,
-} as const;
+// const SWIPER_CONFIG = {
+//   speed: 600,
+//   slidesPerView: 5,
+//   spaceBetween: 32,
+//   breakpoints: SWIPER_BREAKPOINTS,
+// } as const;
 
 export default function TopNftSection() {
   const { NFTListData, isNFTListLoading } = useNFTList();
@@ -58,14 +58,13 @@ export default function TopNftSection() {
         <>
           <Swiper
             className="top-nft__swiper swiper-nft"
-            navigation={true}
-            loop={true}
+            loop={false}
+            slidesPerView={"auto"}
+            spaceBetween={32}
             modules={[Virtual]}
             virtual
-            speed={SWIPER_CONFIG.speed}
-            // slidesPerView={SWIPER_CONFIG.slidesPerView}
-            // spaceBetween={SWIPER_CONFIG.spaceBetween}
-            breakpoints={SWIPER_CONFIG.breakpoints}
+            centeredSlides={true}
+            watchOverflow
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
@@ -92,6 +91,7 @@ export default function TopNftSection() {
                 width={24}
                 height={24}
                 src={Arrow}
+                loading="lazy"
               />
             </button>
             <div className="swiper-nft__separator"></div>
@@ -106,6 +106,7 @@ export default function TopNftSection() {
                 width={24}
                 height={24}
                 src={Arrow}
+                loading="lazy"
               />
             </button>
           </div>

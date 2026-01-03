@@ -27,17 +27,7 @@ export function useCountdown(expirationDate: Date | null): string {
   );
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setTimeRemaining(calculateTimeRemaining(expirationDate));
-    }, 0);
-
-    return () => clearTimeout(timeoutId);
-  }, [expirationDate]);
-
-  useEffect(() => {
-    if (!expirationDate) {
-      return;
-    }
+    if (!expirationDate) return;
 
     const interval = setInterval(() => {
       setTimeRemaining(calculateTimeRemaining(expirationDate));
