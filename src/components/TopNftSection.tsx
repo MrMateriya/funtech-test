@@ -6,7 +6,7 @@ import "keen-slider/keen-slider.min.css";
 import { useNFTList } from "@/hooks/useNTFList";
 import { useState } from "react";
 import { motion } from "motion/react";
-import NftSlide from "@/components/ui/NftSlide";
+import NftSlide from "@/components/ui/NFTSlide";
 import Arrow from "@/../public/icons/Arrow.svg";
 
 type SlideDetail = {
