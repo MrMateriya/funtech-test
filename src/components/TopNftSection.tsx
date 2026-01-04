@@ -1,43 +1,112 @@
 "use client";
 
 import Image from "next/image";
-import { SwiperSlide, Swiper } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
-import { Virtual } from "swiper/modules";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 import { useNFTList } from "@/hooks/useNTFList";
-import { useRef } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import NftSlide from "@/components/ui/NftSlide";
 import Arrow from "@/../public/icons/Arrow.svg";
 
-import "swiper/css";
-import "swiper/css/virtual";
+type SlideDetail = {
+  abs: number;
+};
 
-const SWIPER_BREAKPOINTS = {
-  375: {
-    slidesPerView: 1,
-    spaceBetween: 32,
+const BREAKPOINTS = {
+  "(min-width: 3841px)": {
+    slides: { perView: 7, spacing: 40, origin: "center" },
   },
-  // 1024: {
-  //   slidesPerView: 5,
-  //   spaceBetween: 32,
-  // },
-  // 1440: {
-  //   slidesPerView: 5,
-  //   spaceBetween: 40,
-  // },
+  "(max-width: 3840px)": {
+    slides: { perView: 7, spacing: 40, origin: "center" },
+  },
+  "(max-width: 3360px)": {
+    slides: { perView: 6, spacing: 40, origin: "center" },
+  },
+  "(max-width: 2860px)": {
+    slides: { perView: 5, spacing: 40, origin: "center" },
+  },
+  "(max-width: 2560px)": {
+    slides: { perView: 7, spacing: 40, origin: "center" },
+  },
+  "(max-width: 2340px)": {
+    slides: { perView: 5.8, spacing: 40, origin: "center" },
+  },
+  "(max-width: 1650px)": {
+    slides: { perView: 5, spacing: 40, origin: "center" },
+  },
+  "(max-width: 1440px)": {
+    slides: { perView: 4.55, spacing: 40, origin: "center" },
+  },
+  "(max-width: 1280px)": {
+    slides: { perView: 4, spacing: 40, origin: "center" },
+  },
+  "(max-width: 1110px)": {
+    slides: { perView: 3.5, spacing: 40, origin: "center" },
+  },
+  "(max-width: 1024px)": {
+    slides: { perView: 4.3, spacing: 32, origin: "center" },
+  },
+  "(max-width: 930px)": {
+    slides: { perView: 3.5, spacing: 32, origin: "center" },
+  },
+  "(max-width: 768px)": {
+    slides: { perView: 3, spacing: 32, origin: "center" },
+  },
+  "(max-width: 640px)": {
+    slides: { perView: 2.5, spacing: 32, origin: "center" },
+  },
+  "(max-width: 550px)": {
+    slides: { perView: 2, spacing: 32, origin: "center" },
+  },
+  "(max-width: 450px)": {
+    slides: { perView: 1.8, spacing: 32, origin: "center" },
+  },
+  "(max-width: 375px)": {
+    slides: { perView: 1.68, spacing: 32, origin: "center" },
+  },
+  "(max-width: 340px)": {
+    slides: { perView: 1.4, spacing: 32, origin: "center" },
+  },
 } as const;
-
-// const SWIPER_CONFIG = {
-//   speed: 600,
-//   slidesPerView: 5,
-//   spaceBetween: 32,
-//   breakpoints: SWIPER_BREAKPOINTS,
-// } as const;
+const SLIDES_PER_VIEW = 7;
+const NUMBER_SLIDES = SLIDES_PER_VIEW + 2;
 
 export default function TopNftSection() {
   const { NFTListData, isNFTListLoading } = useNFTList();
-  const swiperRef = useRef<SwiperType | null>(null);
+
+  const [slidesDetails, setSlidesDetails] = useState<readonly SlideDetail[]>([]);
+  
+  const [sliderRefCallback, slider] = useKeenSlider<HTMLDivElement>({
+    initial: 4,
+    loop: {
+      min: 0,
+      max: (NFTListData?.length ?? 0) - 1,
+    },
+    range: {
+      align: true,
+      min: 0,
+      max: (NFTListData?.length ?? 0) - 1,
+    },
+    mode: "free-snap",
+    detailsChanged: (s) => {
+      setSlidesDetails(s.track.details.slides);
+    },
+    slides: {
+      number: NUMBER_SLIDES,
+      perView: SLIDES_PER_VIEW,
+      origin: "center",
+      spacing: 40,
+    },
+    breakpoints: BREAKPOINTS,
+  });
+
+  const handleSlidePrev = () => {
+    slider.current?.prev();
+  }
+  const handleSlideNext = () => {
+    slider.current?.next(); 
+  }
 
   return (
     <section className="main-page__top-nft top-nft">
@@ -56,32 +125,27 @@ export default function TopNftSection() {
         </div>
       ) : NFTListData?.length ? (
         <>
-          <Swiper
-            className="top-nft__swiper swiper-nft"
-            loop={false}
-            slidesPerView={"auto"}
-            spaceBetween={32}
-            modules={[Virtual]}
-            virtual
-            centeredSlides={true}
-            watchOverflow
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-          >
-            {NFTListData.map((nft, index) => (
-              <SwiperSlide
-                className="swiper-nft__slide"
-                key={`${nft.name}-${index}`}
-                virtualIndex={index}
-              >
-                <NftSlide className="swiper-nft__slide-nft" nft={nft} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div ref={sliderRefCallback} className="keen-slider top-nft__swiper swiper-nft">
+            {[...Array(NUMBER_SLIDES).keys()].map((idx) => {
+              const absIndex = slidesDetails?.[idx]?.abs;
+              const nft =
+                typeof absIndex === "number" ? NFTListData[absIndex] : undefined;
+
+              return (
+                <div key={idx} className="keen-slider__slide swiper-nft__slide">
+                  {nft && (
+                    <NftSlide
+                      className="swiper-nft__slide-nft"
+                      nft={nft}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
           <div className="swiper-nft__navigation">
             <button
-              onClick={() => swiperRef.current?.slidePrev()}
+              onClick={handleSlidePrev}
               className="swiper-nft__navigation-button"
               aria-label="Previous slide"
             >
@@ -96,7 +160,7 @@ export default function TopNftSection() {
             </button>
             <div className="swiper-nft__separator"></div>
             <button
-              onClick={() => swiperRef.current?.slideNext()}
+              onClick={handleSlideNext}
               className="swiper-nft__navigation-button"
               aria-label="Next slide"
             >
